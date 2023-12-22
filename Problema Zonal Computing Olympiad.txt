@@ -1,0 +1,45 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using std::cout;
+using std::cin;
+using std::vector;
+
+int nr_c = 0; //clienti
+int pr_c = 0; // preturile clientilor
+int s = 0; //suma imp
+int m = 0;
+int imp = 0;
+
+int main(){
+    cin >> nr_c;
+    vector<int> preturi;
+    vector<int> maxpreturi;
+    for(int i = 0; i < nr_c; i++){
+        cin >> pr_c;
+    if(pr_c >= 1 && pr_c <= 108)
+        preturi.push_back(pr_c);
+        else
+        {
+            cout << "nr introdus nu apartine intervalului 1,108";
+            return 1;
+        }
+    }
+    for(auto v1 : preturi){
+        s = 0;
+        imp = 0;
+        for(auto v2 : preturi){
+            if(v2 / v1 >= 1)
+            imp += 1;
+            s = imp*v1;
+            maxpreturi.push_back(s);
+        }
+    }
+    m = *std::max_element(maxpreturi.begin(), maxpreturi.end());
+    cout << m;
+    return 0;
+}
+
+
+

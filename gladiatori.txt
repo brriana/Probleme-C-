@@ -1,0 +1,19 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int N;
+    cin >> N;
+    vector<int> v(N);
+    for (int i = 0; i < N; i++)
+        cin >> v[i];
+    sort(v.begin(), v.end());
+    long long coef_ent = 0;
+    for (int j = N - 1; j > 0; j--)
+        coef_ent += v[j] - v[0];
+    cout << coef_ent << endl;
+    return 0;
+}
